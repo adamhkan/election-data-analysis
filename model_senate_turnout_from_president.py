@@ -38,10 +38,12 @@ class CountyRecord:
 
 
 def _normalize_county_name(county: str) -> str:
+    # Normalize case/spacing so minor formatting differences do not create false mismatches.
     return " ".join(county.strip().lower().split())
 
 
 def _to_int(value: str) -> int:
+    # Source CSVs use comma-separated thousands (e.g., "12,882"), so strip commas.
     cleaned = value.replace(",", "").strip()
     if cleaned == "":
         raise ValueError("Encountered empty numeric field")
@@ -60,7 +62,7 @@ def load_presidential_votes(path: str) -> Dict[str, Tuple[str, int, int]]:
         raise ValueError(f"Presidential file looks too short: {path}")
 
     # Expected format has a two-row header, then county data:
-    # col 0: County, col 1: Trump #, col 3: Harris #
+    # col 0: County, col 1: Trump raw votes, col 3: Harris raw votes.
     for row in rows[2:]:
         if not row or len(row) < 4:
             continue
@@ -91,6 +93,7 @@ def load_senate_turnout(path: str) -> Dict[str, Tuple[str, int]]:
             raise ValueError(f"Senate file missing required columns: {sorted(missing)}")
 
         for row in reader:
+            # This file includes multiple races; intentionally keep only 2024 Senate rows.
             if row["race"].strip() != "2024 Wisconsin U.S. Senate":
                 continue
             county = row["county"].strip()
@@ -121,6 +124,7 @@ def build_dataset(
             f"found {len(presidential_counties)}"
         )
 
+    # Require exact county-set equality after normalization; fail fast if either file is incomplete.
     if senate_counties != presidential_counties:
         only_senate = sorted(senate_counties - presidential_counties)
         only_pres = sorted(presidential_counties - senate_counties)
@@ -164,7 +168,7 @@ def fit_bounded_two_parameter_model(records: Sequence[CountyRecord]) -> Tuple[fl
     - Check unconstrained OLS solution.
     - If not feasible, evaluate boundary optima on each edge and corners.
     """
-    # Build sufficient statistics.
+    # Build normal-equation sufficient statistics for y ~= a*h + b*t.
     s_hh = s_tt = s_ht = s_hy = s_ty = 0.0
     for r in records:
         h = float(r.harris_votes)
@@ -186,7 +190,7 @@ def fit_bounded_two_parameter_model(records: Sequence[CountyRecord]) -> Tuple[fl
         if 0.0 <= a_star <= 1.0 and 0.0 <= b_star <= 1.0:
             candidates.append((a_star, b_star))
 
-    # Boundary optima on lines a=0, a=1, b=0, b=1.
+    # Boundary optima on lines a=0, a=1, b=0, b=1 (each is a 1D least-squares problem).
     if s_tt > 0:
         b_a0 = max(0.0, min(1.0, s_ty / s_tt))
         candidates.append((0.0, b_a0))
@@ -199,7 +203,7 @@ def fit_bounded_two_parameter_model(records: Sequence[CountyRecord]) -> Tuple[fl
         a_b1 = max(0.0, min(1.0, (s_hy - s_ht) / s_hh))
         candidates.append((a_b1, 1.0))
 
-    # Corners.
+    # Corners are also potential optima for a box-constrained convex quadratic.
     candidates.extend([(0.0, 0.0), (0.0, 1.0), (1.0, 0.0), (1.0, 1.0)])
 
     best_a, best_b = 0.0, 0.0
@@ -230,6 +234,7 @@ def compute_metrics(records: Sequence[CountyRecord], a: float, b: float) -> Dict
     rmse = math.sqrt(mse)
     mae = sae / n
 
+    # R^2 uses county-level turnout variance around mean turnout.
     sst = sum((y - y_mean) ** 2 for y in y_values)
     r2 = float("nan") if sst == 0 else 1.0 - (sse / sst)
 
@@ -264,6 +269,7 @@ def write_county_predictions(
             ]
         )
         for r in sorted(records, key=lambda x: x.county):
+            # Residual convention: predicted - actual (positive means overprediction).
             pred = a * r.harris_votes + b * r.trump_votes
             resid = pred - r.senate_turnout
             writer.writerow(
@@ -303,6 +309,9 @@ def main() -> int:
     args = parse_args()
 
     try:
+        # Load each file with the requested source-of-truth split:
+        # - senate turnout from the combined file
+        # - presidential Harris/Trump counts from presidential file only
         senate_turnout = load_senate_turnout(args.senate_csv)
         presidential_votes = load_presidential_votes(args.presidential_csv)
         records = build_dataset(senate_turnout, presidential_votes)
