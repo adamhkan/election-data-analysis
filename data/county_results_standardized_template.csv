@@ -1,0 +1,2 @@
+county,election_date,race,dem_candidate,rep_candidate,dem_votes,rep_votes,other_votes,total_votes,source_csv
+Example County,YYYY-MM-DD,Example Race,Dem Candidate,Rep Candidate,0,0,0,0,source-file.csv

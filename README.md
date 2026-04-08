@@ -17,6 +17,42 @@ Output CSV:
 
 - `data/wi_county_results_2024_2025.csv`
 
+## Standardized county CSV format + generalized model
+
+Use this script to create standardized county-level files for modeling:
+
+```bash
+python standardize_wi_election_csvs.py
+```
+
+This writes:
+
+- `data/county_results_standardized_template.csv` (schema template)
+- `data/wi_2024_president_standardized.csv`
+- `data/wi_2024_senate_standardized.csv`
+- `data/wi_2025_supreme_standardized.csv`
+
+Then run the generalized retention model:
+
+```bash
+python model_turnout_from_two_standardized_csvs.py \
+  --source-csv data/wi_2024_president_standardized.csv \
+  --target-csv data/wi_2024_senate_standardized.csv \
+  --expected-counties 72 \
+  --county-output data/generalized_model_2024_senate_predictions.csv
+```
+
+To include stage-2 party-switching estimation (sequential or joint fit), use:
+
+```bash
+python model_turnout_from_two_standardized_csvs.py \
+  --source-csv data/wi_2024_president_standardized.csv \
+  --target-csv data/wi_2025_supreme_standardized.csv \
+  --expected-counties 72 \
+  --fit-mode sequential \
+  --county-output data/generalized_switching_model_2025_supreme_sequential.csv
+```
+
 ### Data sources used by the script
 
 - WEC county-by-county PDF (2024 President):
