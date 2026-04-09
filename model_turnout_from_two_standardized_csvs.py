@@ -63,6 +63,16 @@ class FitResult:
     t_loyal_rep: float
 
 
+@dataclass(frozen=True)
+class CounterfactualResult:
+    total_dem_votes: float
+    total_rep_votes: float
+    dem_share_percent: float
+    rep_share_percent: float
+    dem_margin_votes: float
+    dem_margin_percent: float
+
+
 def _to_int(value: str) -> int:
     return int(value.replace(",", "").strip())
 
@@ -345,6 +355,35 @@ def compute_stage2_diagnostics(records: Sequence[CountyRecord], fit: FitResult) 
     }
 
 
+def compute_full_return_counterfactual(records: Sequence[CountyRecord], fit: FitResult) -> CounterfactualResult:
+    """Counterfactual where all source two-party voters return with learned switching behavior."""
+    total_dem = 0.0
+    total_rep = 0.0
+    for r in records:
+        # Set retention to 100% for both source-party groups, while keeping learned loyalty/switching.
+        dem = fit.h_loyal_dem * r.source_dem_votes + (1.0 - fit.t_loyal_rep) * r.source_rep_votes
+        rep = (1.0 - fit.h_loyal_dem) * r.source_dem_votes + fit.t_loyal_rep * r.source_rep_votes
+        total_dem += dem
+        total_rep += rep
+
+    total = total_dem + total_rep
+    if total <= 0:
+        raise ValueError("Counterfactual total votes are non-positive")
+
+    dem_share = 100.0 * total_dem / total
+    rep_share = 100.0 * total_rep / total
+    dem_margin_votes = total_dem - total_rep
+    dem_margin_percent = dem_share - rep_share
+    return CounterfactualResult(
+        total_dem_votes=total_dem,
+        total_rep_votes=total_rep,
+        dem_share_percent=dem_share,
+        rep_share_percent=rep_share,
+        dem_margin_votes=dem_margin_votes,
+        dem_margin_percent=dem_margin_percent,
+    )
+
+
 def write_county_predictions(records: Sequence[CountyRecord], fit: FitResult, output_path: str) -> None:
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     with open(output_path, "w", newline="", encoding="utf-8") as f:
@@ -358,12 +397,16 @@ def write_county_predictions(records: Sequence[CountyRecord], fit: FitResult, ou
                 "actual_target_rep_votes",
                 "predicted_target_dem_votes",
                 "predicted_target_rep_votes",
+                "counterfactual_full_return_dem_votes",
+                "counterfactual_full_return_rep_votes",
                 "dem_percent_error_0_to_100_scale",
                 "rep_percent_error_0_to_100_scale",
             ]
         )
         for r in sorted(records, key=lambda x: x.county):
             pred_dem, pred_rep = _predict_candidate_votes(r, fit)
+            cf_dem = fit.h_loyal_dem * r.source_dem_votes + (1.0 - fit.t_loyal_rep) * r.source_rep_votes
+            cf_rep = (1.0 - fit.h_loyal_dem) * r.source_dem_votes + fit.t_loyal_rep * r.source_rep_votes
             pe_dem = 100.0 * (pred_dem - r.target_dem_votes) / r.target_dem_votes
             pe_rep = 100.0 * (pred_rep - r.target_rep_votes) / r.target_rep_votes
             w.writerow(
@@ -375,6 +418,8 @@ def write_county_predictions(records: Sequence[CountyRecord], fit: FitResult, ou
                     r.target_rep_votes,
                     f"{pred_dem:.6f}",
                     f"{pred_rep:.6f}",
+                    f"{cf_dem:.6f}",
+                    f"{cf_rep:.6f}",
                     f"{pe_dem:.6f}",
                     f"{pe_rep:.6f}",
                 ]
@@ -420,6 +465,7 @@ def main() -> int:
             fit = fit_joint(records)
 
         diagnostics = compute_stage2_diagnostics(records, fit)
+        counterfactual = compute_full_return_counterfactual(records, fit)
         write_county_predictions(records, fit, args.county_output)
     except Exception as exc:  # noqa: BLE001
         print(f"ERROR: {exc}", file=sys.stderr)
@@ -449,6 +495,14 @@ def main() -> int:
     print(f"  stage2_unweighted_vote_mse        = {diagnostics['stage2_unweighted_vote_mse']:.6f}")
     print(f"  stage2_unweighted_vote_rmse       = {diagnostics['stage2_unweighted_vote_rmse']:.6f}")
     print(f"  stage2_unweighted_vote_mae        = {diagnostics['stage2_unweighted_vote_mae']:.6f}")
+
+    print("\nCounterfactual result if 100% of source two-party voters returned:")
+    print(f"  total_dem_votes  = {counterfactual.total_dem_votes:.3f}")
+    print(f"  total_rep_votes  = {counterfactual.total_rep_votes:.3f}")
+    print(f"  dem_share_pct    = {counterfactual.dem_share_percent:.6f}")
+    print(f"  rep_share_pct    = {counterfactual.rep_share_percent:.6f}")
+    print(f"  dem_margin_votes = {counterfactual.dem_margin_votes:.3f}")
+    print(f"  dem_margin_pct   = {counterfactual.dem_margin_percent:.6f}")
 
     print(f"\nCounty-level predictions written to: {args.county_output}")
     return 0

@@ -53,6 +53,8 @@ python model_turnout_from_two_standardized_csvs.py \
   --county-output data/generalized_switching_model_2025_supreme_sequential.csv
 ```
 
+The model output now also prints a counterfactual statewide result where 100% of source two-party voters return in the second race while following the learned switching tendencies.
+
 ### Data sources used by the script
 
 - WEC county-by-county PDF (2024 President):
