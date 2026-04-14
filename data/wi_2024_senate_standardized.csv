@@ -1,0 +1,73 @@
+county,election_date,race,dem_candidate,rep_candidate,dem_votes,rep_votes,other_votes,total_votes,source_csv
+Adams,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4806,7551,402,12759,wi_county_results_2024_2025.csv
+Ashland,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4775,3844,220,8839,wi_county_results_2024_2025.csv
+Barron,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,9352,16462,727,26541,wi_county_results_2024_2025.csv
+Bayfield,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,6260,4697,212,11169,wi_county_results_2024_2025.csv
+Brown,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,67789,76722,3360,147871,wi_county_results_2024_2025.csv
+Buffalo,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,2913,4898,208,8019,wi_county_results_2024_2025.csv
+Burnett,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3730,6745,256,10731,wi_county_results_2024_2025.csv
+Calumet,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,12850,19075,749,32674,wi_county_results_2024_2025.csv
+Chippewa,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,14875,22189,991,38055,wi_county_results_2024_2025.csv
+Clark,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4819,9917,441,15177,wi_county_results_2024_2025.csv
+Columbia,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,16753,17120,751,34624,wi_county_results_2024_2025.csv
+Crawford,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4026,4761,255,9042,wi_county_results_2024_2025.csv
+Dane,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,273696,84762,4983,363441,wi_county_results_2024_2025.csv
+Dodge,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,16819,31928,1148,49895,wi_county_results_2024_2025.csv
+Door,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,10503,9942,363,20808,wi_county_results_2024_2025.csv
+Douglas,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,13119,11105,665,24889,wi_county_results_2024_2025.csv
+Dunn,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,10795,13983,598,25376,wi_county_results_2024_2025.csv
+Eau Claire,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,34382,26584,1423,62389,wi_county_results_2024_2025.csv
+Florence,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,788,2272,74,3134,wi_county_results_2024_2025.csv
+Fond Du Lac,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,20777,35909,1353,58039,wi_county_results_2024_2025.csv
+Forest,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,1853,3200,138,5191,wi_county_results_2024_2025.csv
+Grant,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,11300,14995,615,26910,wi_county_results_2024_2025.csv
+Green,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,11188,10280,466,21934,wi_county_results_2024_2025.csv
+Green Lake,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3592,7138,256,10986,wi_county_results_2024_2025.csv
+Iowa,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,7946,6323,297,14566,wi_county_results_2024_2025.csv
+Iron,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,1513,2445,78,4036,wi_county_results_2024_2025.csv
+Jackson,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4314,5764,323,10401,wi_county_results_2024_2025.csv
+Jefferson,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,20631,28005,1053,49689,wi_county_results_2024_2025.csv
+Juneau,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4991,8993,452,14436,wi_county_results_2024_2025.csv
+Kenosha,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,41946,45165,2487,89598,wi_county_results_2024_2025.csv
+Kewaunee,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4254,7869,255,12378,wi_county_results_2024_2025.csv
+La Crosse,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,39268,30746,1601,71615,wi_county_results_2024_2025.csv
+Lafayette,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3763,4838,167,8768,wi_county_results_2024_2025.csv
+Langlade,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3830,7444,284,11558,wi_county_results_2024_2025.csv
+Lincoln,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,6572,10119,401,17092,wi_county_results_2024_2025.csv
+Manitowoc,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,17627,27201,1138,45966,wi_county_results_2024_2025.csv
+Marathon,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,31883,44779,1650,78312,wi_county_results_2024_2025.csv
+Marinette,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,7678,15730,721,24129,wi_county_results_2024_2025.csv
+Marquette,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3405,5729,237,9371,wi_county_results_2024_2025.csv
+Menominee,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,1203,288,44,1535,wi_county_results_2024_2025.csv
+Milwaukee,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,315402,131700,10405,457507,wi_county_results_2024_2025.csv
+Monroe,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,8647,13860,656,23163,wi_county_results_2024_2025.csv
+Oconto,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,7180,16959,566,24705,wi_county_results_2024_2025.csv
+Oneida,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,10272,13898,497,24667,wi_county_results_2024_2025.csv
+Outagamie,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,49196,59077,2833,111106,wi_county_results_2024_2025.csv
+Ozaukee,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,27208,34914,951,63073,wi_county_results_2024_2025.csv
+Pepin,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,1591,2636,91,4318,wi_county_results_2024_2025.csv
+Pierce,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,10407,14172,559,25138,wi_county_results_2024_2025.csv
+Polk,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,9710,17446,775,27931,wi_county_results_2024_2025.csv
+Portage,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,21989,20082,861,42932,wi_county_results_2024_2025.csv
+Price,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3181,5424,201,8806,wi_county_results_2024_2025.csv
+Racine,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,49333,54789,2504,106626,wi_county_results_2024_2025.csv
+Richland,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4111,4912,210,9233,wi_county_results_2024_2025.csv
+Rock,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,47080,38097,2257,87434,wi_county_results_2024_2025.csv
+Rusk,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,2548,5372,281,8201,wi_county_results_2024_2025.csv
+Sauk,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,18429,17895,853,37177,wi_county_results_2024_2025.csv
+Sawyer,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4621,6208,204,11033,wi_county_results_2024_2025.csv
+Shawano,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,7549,15052,697,23298,wi_county_results_2024_2025.csv
+Sheboygan,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,27552,37747,1605,66904,wi_county_results_2024_2025.csv
+St. Croix,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,23792,34844,1393,60029,wi_county_results_2024_2025.csv
+Taylor,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,2943,7892,287,11122,wi_county_results_2024_2025.csv
+Trempealeau,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,6424,9118,380,15922,wi_county_results_2024_2025.csv
+Vernon,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,7765,8312,405,16482,wi_county_results_2024_2025.csv
+Vilas,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,6120,9607,288,16015,wi_county_results_2024_2025.csv
+Walworth,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,22882,35692,1454,60028,wi_county_results_2024_2025.csv
+Washburn,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,3916,6724,242,10882,wi_county_results_2024_2025.csv
+Washington,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,28053,61163,1526,90742,wi_county_results_2024_2025.csv
+Waukesha,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,105781,163590,4310,273681,wi_county_results_2024_2025.csv
+Waupaca,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,10013,19117,977,30107,wi_county_results_2024_2025.csv
+Waushara,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,4643,9253,354,14250,wi_county_results_2024_2025.csv
+Winnebago,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,44721,47265,2515,94501,wi_county_results_2024_2025.csv
+Wood,2024-11-05,2024 Wisconsin U.S. Senate,Tammy Baldwin,Eric Hovde,17134,23662,1035,41831,wi_county_results_2024_2025.csv
